@@ -51,17 +51,21 @@
     </div>
   </nav>
 
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- ===== Hero ===== -->
   <section class="hero">
-    <div class="hero-orb-1"></div>
-    <div class="hero-orb-2"></div>
+    <canvas class="hero-particles" id="heroParticles"></canvas>
+    <div class="hero-orb-1 parallax-orb"></div>
+    <div class="hero-orb-2 parallax-orb"></div>
     <div class="hero-content">
       <div class="hero-badge hero-anim">Part of the Anthropic Campus Program</div>
       <h1 class="hero-anim">Claude Builders Club<br><span class="hero-gradient-text">@ Mizzou</span></h1>
       <p class="hero-anim">Learn, Build, and Ship with Claude AI at the University of Missouri. Free Claude Pro access, monthly API credits, and a community of builders across every major.</p>
       <div class="hero-buttons hero-anim">
-        <a href="{{ links.join_form }}" target="_blank" rel="noopener noreferrer" class="btn-gold">Join the Club</a>
-        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="btn-outline">Join GroupMe</a>
+        <a href="{{ links.join_form }}" target="_blank" rel="noopener noreferrer" class="btn-gold magnetic">Join the Club</a>
+        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="btn-outline magnetic">Join GroupMe</a>
       </div>
     </div>
   </section>
@@ -75,7 +79,7 @@
       </div>
       <div class="grid-4 stagger-container">
         {% for b in benefits %}
-        <div class="card stagger-item">
+        <div class="card stagger-item tilt-card glow-border">
           <div class="card-icon">{{ b.icon }}</div>
           <h3 class="text-heading">{{ b.title }}</h3>
           <p class="text-muted">{{ b.description }}</p>
@@ -144,7 +148,7 @@
       </div>
       <div class="grid-3 stagger-container">
         {% for m in team %}
-        <div class="card team-card stagger-item">
+        <div class="card team-card stagger-item tilt-card">
           <div class="avatar">{{ m.initials }}</div>
           <h3 class="text-heading" style="margin:0 0 0.25rem 0;">{{ m.name }}</h3>
           <div class="role">{{ m.role }}</div>
@@ -165,7 +169,7 @@
       </div>
       <div class="grid-3 stagger-container">
         {% for p in projects %}
-        <div class="card project-card stagger-item">
+        <div class="card project-card stagger-item tilt-card">
           <h3 class="text-heading">{{ p.title }}</h3>
           <p class="text-muted">{{ p.description }}</p>
           <div class="tech-tags">

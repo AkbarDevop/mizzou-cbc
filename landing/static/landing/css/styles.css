@@ -630,3 +630,234 @@ body.dark .tech-tag { color: var(--gold); }
 }
 .footer-bottom a { color: var(--tan); }
 .footer-bottom a:hover { color: var(--gold); }
+
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--tan), var(--gold));
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== Hero Particles Canvas ===== */
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ===== Parallax Orbs ===== */
+.parallax-orb {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+
+/* ===== 3D Tilt Card ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease-out, box-shadow 0.2s;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+body.dark .tilt-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* ===== Glowing Border on Hover ===== */
+.glow-border {
+  position: relative;
+  overflow: hidden;
+}
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(
+    from 0deg,
+    var(--gold),
+    var(--tan),
+    var(--gold-dark),
+    var(--gold)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: rotate-border 3s linear infinite;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+.glow-border::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #fff;
+  border-radius: calc(1rem - 2px);
+  z-index: -1;
+}
+body.dark .glow-border::after {
+  background: #1e1e1e;
+}
+
+@keyframes rotate-border {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Magnetic Button ===== */
+.magnetic {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+/* ===== Nav link animated underline ===== */
+.nav-links a:not(.nav-cta):not(.dark-toggle) {
+  position: relative;
+}
+.nav-links a:not(.nav-cta):not(.dark-toggle)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:not(.nav-cta):not(.dark-toggle):hover::after {
+  width: 100%;
+}
+
+/* ===== Pulse glow on gold CTA ===== */
+.btn-gold {
+  position: relative;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(241,184,45,0.4);
+  opacity: 0;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ===== Avatar hover spin ===== */
+.avatar {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+}
+.team-card:hover .avatar {
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 24px rgba(241,184,45,0.2);
+}
+
+/* ===== Stat card hover scale ===== */
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold), var(--tan));
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold));
+}
+
+body.dark ::-webkit-scrollbar-track,
+body.dark::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+body.dark ::-webkit-scrollbar-thumb,
+body.dark::-webkit-scrollbar-thumb {
+  border-color: #1a1a1a;
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) #f5f5f5;
+}
+body.dark {
+  scrollbar-color: var(--gold) #1a1a1a;
+}
+
+/* ===== Custom Cursor ===== */
+.custom-cursor {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+}
+.custom-cursor.cursor-hover {
+  width: 56px;
+  height: 56px;
+  background: rgba(241, 184, 45, 0.15);
+  border-color: var(--tan);
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  .custom-cursor, .custom-cursor-dot { display: none; }
+}
+/* Hide default cursor on desktop */
+@media (hover: hover) {
+  *, *::before, *::after { cursor: none !important; }
+}
