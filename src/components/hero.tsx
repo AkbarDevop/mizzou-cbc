@@ -1,20 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LINKS } from "@/lib/constants";
+import HeroParticles from "./hero-particles";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLoaded(true);
+
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      if (orb1Ref.current)
+        orb1Ref.current.style.transform = `translateY(${scrollY * 0.3}px)`;
+      if (orb2Ref.current)
+        orb2Ref.current.style.transform = `translateY(${scrollY * 0.2}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Magnetic button handlers
+  const onBtnMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+  };
+  const onBtnMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.transform = "translate(0, 0)";
+  };
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-black via-[#1a1a1a] to-[#2a2a2a]">
-      {/* Subtle gold gradient orb */}
-      <div className="absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-gold/10 blur-[120px]" />
-      <div className="absolute -bottom-40 left-0 h-[400px] w-[400px] rounded-full bg-anthropic-tan/10 blur-[100px]" />
+      <HeroParticles />
+      <div
+        ref={orb1Ref}
+        className="parallax-orb absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-gold/10 blur-[120px]"
+      />
+      <div
+        ref={orb2Ref}
+        className="parallax-orb absolute -bottom-40 left-0 h-[400px] w-[400px] rounded-full bg-anthropic-tan/10 blur-[100px]"
+      />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
         <div
@@ -56,7 +87,9 @@ export default function Hero() {
             href={LINKS.joinForm}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-gold px-8 py-3.5 text-base font-semibold text-black transition-all hover:-translate-y-0.5 hover:bg-gold-dark hover:shadow-lg hover:shadow-gold/25"
+            onMouseMove={onBtnMouseMove}
+            onMouseLeave={onBtnMouseLeave}
+            className="magnetic btn-gold-glow rounded-full bg-gold px-8 py-3.5 text-base font-semibold text-black transition-all hover:-translate-y-0.5 hover:bg-gold-dark hover:shadow-lg hover:shadow-gold/25"
           >
             Join the Club
           </a>
@@ -64,7 +97,9 @@ export default function Hero() {
             href={LINKS.groupMe}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/10"
+            onMouseMove={onBtnMouseMove}
+            onMouseLeave={onBtnMouseLeave}
+            className="magnetic rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-white/10"
           >
             Join GroupMe
           </a>

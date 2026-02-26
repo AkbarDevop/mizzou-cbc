@@ -2,10 +2,12 @@
 
 import { PROJECTS } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/lib/use-animate-on-scroll";
+import { useTilt } from "@/lib/use-tilt";
 
 export default function Projects() {
   const heading = useAnimateOnScroll();
   const cards = useAnimateOnScroll(0.1);
+  const tilt = useTilt();
 
   return (
     <section id="projects" className="bg-white py-24">
@@ -32,7 +34,9 @@ export default function Projects() {
           {PROJECTS.map((project) => (
             <div
               key={project.title}
-              className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+              onMouseMove={tilt.onMouseMove}
+              onMouseLeave={tilt.onMouseLeave}
+              className="tilt-card group flex flex-col rounded-2xl border border-gray-100 bg-white p-8 shadow-sm"
             >
               <h3 className="mb-2 text-xl font-semibold text-[#1a1a1a]">
                 {project.title}

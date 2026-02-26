@@ -31,7 +31,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-gray-700 transition-colors hover:text-gold"
+                className="nav-link-underline text-sm font-medium text-gray-700 transition-colors hover:text-gold"
               >
                 {link.label}
               </a>
@@ -40,7 +40,7 @@ export default function Navbar() {
               href={LINKS.joinForm}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-gold px-5 py-2 text-sm font-semibold text-black transition-colors hover:bg-gold-dark"
+              className="btn-gold-glow rounded-full bg-gold px-5 py-2 text-sm font-semibold text-black transition-colors hover:bg-gold-dark"
             >
               Join Now
             </a>

@@ -2,10 +2,12 @@
 
 import { TEAM } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/lib/use-animate-on-scroll";
+import { useTilt } from "@/lib/use-tilt";
 
 export default function Team() {
   const heading = useAnimateOnScroll();
   const cards = useAnimateOnScroll(0.1);
+  const tilt = useTilt();
 
   return (
     <section id="team" className="bg-warm-cream py-24">
@@ -32,16 +34,18 @@ export default function Team() {
           {TEAM.map((member) => (
             <div
               key={member.name}
-              className="group rounded-2xl bg-white p-8 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+              onMouseMove={tilt.onMouseMove}
+              onMouseLeave={tilt.onMouseLeave}
+              className="team-card tilt-card group rounded-2xl bg-white p-8 text-center shadow-sm"
             >
               {member.image ? (
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="mx-auto mb-4 h-24 w-24 rounded-full object-cover"
+                  className="avatar-spin mx-auto mb-4 h-24 w-24 rounded-full object-cover"
                 />
               ) : (
-                <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-gold/20 to-anthropic-tan/20">
+                <div className="avatar-spin mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-gold/20 to-anthropic-tan/20">
                   <span className="text-3xl font-bold text-gold">
                     {member.name
                       .split(" ")

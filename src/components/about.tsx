@@ -18,7 +18,6 @@ function AnimatedNumber({ value }: { value: string }) {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
 
-          // Extract numeric part
           const numMatch = value.match(/[\d,]+/);
           if (!numMatch) {
             setDisplay(value);
@@ -39,7 +38,6 @@ function AnimatedNumber({ value }: { value: string }) {
           const timer = setInterval(() => {
             step++;
             const progress = step / steps;
-            // Ease out cubic
             const eased = 1 - Math.pow(1 - progress, 3);
             const current = Math.round(target * eased);
             setDisplay(
@@ -109,7 +107,7 @@ export default function About() {
             {ABOUT_STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl bg-white p-8 text-center shadow-sm"
+                className="stat-hover rounded-2xl bg-white p-8 text-center shadow-sm"
               >
                 <div className="mb-2 text-4xl font-extrabold text-gold">
                   <AnimatedNumber value={stat.value} />

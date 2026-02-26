@@ -32,7 +32,26 @@ body {
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
-/* Scroll animations */
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--anthropic-tan), var(--gold));
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== Scroll Animations ===== */
 .animate-fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -59,11 +78,11 @@ body {
 .stagger-children.visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(7) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
 
-/* FAQ accordion animation */
+/* ===== FAQ Accordion ===== */
 .faq-answer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s ease-out;
+  transition: grid-template-rows 0.35s ease;
 }
 
 .faq-answer.open {
@@ -72,4 +91,186 @@ body {
 
 .faq-answer > div {
   overflow: hidden;
+}
+
+/* ===== 3D Tilt Card ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease-out, box-shadow 0.2s;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Glowing Border on Hover ===== */
+.glow-border {
+  position: relative;
+  overflow: hidden;
+}
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(
+    from 0deg,
+    var(--gold),
+    var(--anthropic-tan),
+    var(--gold-dark),
+    var(--gold)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: rotate-border 3s linear infinite;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+.glow-border::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #fff;
+  border-radius: calc(1rem - 2px);
+  z-index: -1;
+}
+
+@keyframes rotate-border {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Nav Link Animated Underline ===== */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-link-underline:hover::after {
+  width: 100%;
+}
+
+/* ===== Pulse Glow on Gold CTA ===== */
+.btn-gold-glow {
+  position: relative;
+}
+.btn-gold-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(241, 184, 45, 0.4);
+  opacity: 0;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ===== Avatar Hover Spin ===== */
+.avatar-spin {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+}
+.team-card:hover .avatar-spin {
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 24px rgba(241, 184, 45, 0.2);
+}
+
+/* ===== Stat Card Hover Scale ===== */
+.stat-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Parallax Orbs ===== */
+.parallax-orb {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ===== Magnetic Button ===== */
+.magnetic {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold), var(--anthropic-tan));
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold));
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) #f5f5f5;
+}
+
+/* ===== Custom Cursor ===== */
+.custom-cursor {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  mix-blend-mode: difference;
+}
+.custom-cursor.cursor-hover {
+  width: 56px;
+  height: 56px;
+  background: rgba(241, 184, 45, 0.15);
+  border-color: var(--anthropic-tan);
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  .custom-cursor, .custom-cursor-dot { display: none; }
+}
+/* Hide default cursor on desktop */
+@media (hover: hover) {
+  *, *::before, *::after { cursor: none !important; }
 }
