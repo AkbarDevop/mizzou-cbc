@@ -149,7 +149,11 @@
       <div class="grid-3 stagger-container">
         {% for m in team %}
         <div class="card team-card stagger-item tilt-card">
+          {% if m.image %}
+          <img src="{% static m.image %}" alt="{{ m.name }}" class="avatar avatar-img">
+          {% else %}
           <div class="avatar">{{ m.initials }}</div>
+          {% endif %}
           <h3 class="text-heading" style="margin:0 0 0.25rem 0;">{{ m.name }}</h3>
           <div class="role">{{ m.role }}</div>
           <div class="major text-muted">{{ m.major }}</div>

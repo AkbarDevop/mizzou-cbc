@@ -488,6 +488,10 @@ body.dark .stat-card { background: #1e1e1e; }
   font-weight: 700;
   color: var(--gold);
 }
+.avatar-img {
+  object-fit: cover;
+  background: none;
+}
 .team-card .role {
   font-size: 0.875rem;
   font-weight: 500;

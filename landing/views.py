@@ -66,12 +66,11 @@ def index(request):
             },
         ],
         'team': [
-            {'name': 'Alex Johnson', 'initials': 'AJ', 'role': 'Chapter Ambassador', 'major': 'Computer Science, Senior', 'linkedin': '#'},
-            {'name': 'Maria Garcia', 'initials': 'MG', 'role': 'Vice President', 'major': 'Information Technology, Junior', 'linkedin': '#'},
-            {'name': 'David Kim', 'initials': 'DK', 'role': 'Technical Lead', 'major': 'Computer Engineering, Senior', 'linkedin': '#'},
-            {'name': 'Sarah Chen', 'initials': 'SC', 'role': 'Events Coordinator', 'major': 'Data Science, Junior', 'linkedin': '#'},
-            {'name': 'James Wright', 'initials': 'JW', 'role': 'Marketing Lead', 'major': 'Journalism, Sophomore', 'linkedin': '#'},
-            {'name': 'Priya Patel', 'initials': 'PP', 'role': 'Community Manager', 'major': 'Business Analytics, Junior', 'linkedin': '#'},
+            {'name': 'Brandon Gomes', 'initials': 'BG', 'role': 'President', 'major': 'BS in Computer Science & Math, Senior', 'linkedin': 'https://www.linkedin.com/in/brandon-gomes-mu/', 'image': 'landing/images/team/brandon.jpeg'},
+            {'name': 'Pari Patel', 'initials': 'PP', 'role': 'Vice President', 'major': 'BS in Computer Science, Senior', 'linkedin': 'https://www.linkedin.com/in/paripatel54/', 'image': 'landing/images/team/pari.jpeg'},
+            {'name': 'Colton Treloar', 'initials': 'CT', 'role': 'Treasurer', 'major': 'Computer Science, Junior', 'linkedin': 'https://www.linkedin.com/in/colton-treloar-613442206/', 'image': 'landing/images/team/colton.jpg'},
+            {'name': 'Akbar K.', 'initials': 'AK', 'role': 'Secretary', 'major': 'BS in Electrical Engineering, Junior', 'linkedin': 'https://www.linkedin.com/in/akbarjon-kamoldinov/', 'image': 'landing/images/team/akbar.jpeg'},
+            {'name': 'Sebastian Main', 'initials': 'SM', 'role': 'Outreach', 'major': 'Information Technology, Junior', 'linkedin': 'https://www.linkedin.com/in/sebastian-main-6a4799224/', 'image': ''},
         ],
         'projects': [
             {

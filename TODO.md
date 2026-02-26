@@ -10,7 +10,7 @@ Items that need real data from the team before the site is ready.
 
 ## Team
 - [ ] **Colton Treloar** — confirm major and year
-- [ ] **Sebastian Main** — need a headshot photo (place in `public/team/sebastian.jpg`)
+- [ ] **Sebastian Main** — need a headshot photo (place in `landing/static/landing/images/team/sebastian.jpg`)
 
 ## Events (all 4 are sample/placeholder)
 - [ ] Replace with actual upcoming events (date, title, description, location, time)
@@ -28,4 +28,4 @@ Items that need real data from the team before the site is ready.
 
 ---
 
-**How to update:** All data lives in `src/lib/constants.ts`. Edit the values there and push.
+**How to update:** All data lives in `landing/views.py`. Edit the context dict there and push.
