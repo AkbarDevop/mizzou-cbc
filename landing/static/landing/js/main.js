@@ -25,22 +25,20 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 const allDarkToggles = document.querySelectorAll('.dark-toggle');
 const savedTheme = localStorage.getItem('theme');
 
-function updateToggles() {
-  const isDark = document.body.classList.contains('dark');
+function applyDark(isDark) {
+  document.body.classList.toggle('dark', isDark);
+  document.documentElement.classList.toggle('dark', isDark);
   allDarkToggles.forEach(btn => btn.textContent = isDark ? '☀️' : '🌙');
 }
 
-if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.body.classList.add('dark');
-}
-updateToggles();
+const shouldBeDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+applyDark(shouldBeDark);
 
 allDarkToggles.forEach(btn => {
   btn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
+    const isDark = !document.body.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateToggles();
+    applyDark(isDark);
   });
 });
 
@@ -135,6 +133,23 @@ window.addEventListener('load', () => {
     setTimeout(() => el.classList.add('visible'), i * 150);
   });
 
+});
+
+// ===== Scroll Spy — active nav link =====
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (window.scrollY >= top) {
+      current = section.getAttribute('id');
+    }
+  });
+  navAnchors.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
 });
 
 // ===== Scroll Progress Bar =====
