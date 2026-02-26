@@ -10,7 +10,7 @@ Items that need real data from the team before the site is ready.
 
 ## Team
 - [ ] **Colton Treloar** — confirm major and year
-- [ ] **Sebastian Main** — need a headshot photo (place in `landing/static/landing/images/team/sebastian.jpg`)
+- [X] **Sebastian Main** — need a headshot photo (place in `landing/static/landing/images/team/sebastian.jpg`)
 
 ## Events (all 4 are sample/placeholder)
 - [ ] Replace with actual upcoming events (date, title, description, location, time)
