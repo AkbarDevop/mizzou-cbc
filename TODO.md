@@ -1,0 +1,31 @@
+# CBC Mizzou Website — TODO
+
+Items that need real data from the team before the site is ready.
+
+## Links (currently placeholder)
+- [ ] **Join Form** — replace `https://forms.gle/your-form-link` with actual Google Form signup link
+- [ ] **GroupMe** — replace `https://groupme.com/join_group/your-group-link` with actual GroupMe invite link
+- [ ] **Instagram** — confirm handle is `@cbcmizzou` or update
+- [ ] **Email** — confirm email is `cbcmizzou@gmail.com` or update
+
+## Team
+- [ ] **Colton Treloar** — confirm major and year
+- [ ] **Sebastian Main** — need a headshot photo (place in `public/team/sebastian.jpg`)
+
+## Events (all 4 are sample/placeholder)
+- [ ] Replace with actual upcoming events (date, title, description, location, time)
+- [ ] Add real RSVP links (currently all `#`)
+
+## Projects (all 3 are fictional examples)
+- [ ] **MizzouMeal Planner** — real or remove? Add link if real
+- [ ] **StudyBuddy AI** — real or remove? Add link if real
+- [ ] **Tiger Research Assistant** — real or remove? Add link if real
+
+## Content to Verify
+- [ ] **About stats** — are these accurate for the national CBC program? (60+ Universities, 15K+ Student Builders, 7 Ivy League Schools)
+- [ ] **FAQ answers** — confirm Claude Pro is free for members and API credits amount ($50/mo)
+- [ ] **Favicon / OG image** — add custom favicon and social share image
+
+---
+
+**How to update:** All data lives in `src/lib/constants.ts`. Edit the values there and push.
