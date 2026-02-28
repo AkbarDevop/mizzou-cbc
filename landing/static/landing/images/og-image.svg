@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000"/>
+      <stop offset="50%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#2a2a2a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F1B82D"/>
+      <stop offset="50%" style="stop-color:#f5ce5e"/>
+      <stop offset="100%" style="stop-color:#D4A574"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative orbs -->
+  <circle cx="1050" cy="100" r="200" fill="#F1B82D" opacity="0.06"/>
+  <circle cx="150" cy="530" r="160" fill="#D4A574" opacity="0.06"/>
+  <!-- Gold accent line -->
+  <rect x="100" y="210" width="60" height="4" rx="2" fill="#F1B82D"/>
+  <!-- Main text -->
+  <text x="100" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="#ffffff" letter-spacing="-1">Claude Builders Club</text>
+  <text x="100" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="url(#gold)" letter-spacing="-1">@ Mizzou</text>
+  <!-- Subtitle -->
+  <text x="100" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#9ca3af">Learn, Build, and Ship with Claude AI</text>
+  <!-- Badge -->
+  <rect x="100" y="460" width="340" height="36" rx="18" fill="#F1B82D" opacity="0.12" stroke="#F1B82D" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="120" y="484" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#F1B82D">Part of the Anthropic Campus Program</text>
+  <!-- Bottom border accent -->
+  <rect x="0" y="624" width="1200" height="6" fill="url(#gold)"/>
+</svg>

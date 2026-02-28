@@ -1522,3 +1522,41 @@ body.dark {
 @media (hover: hover) {
   *, *::before, *::after { cursor: none !important; }
 }
+
+/* ===== Back to Top Button ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(241,184,45,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.2s;
+  z-index: 90;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(241,184,45,0.4);
+}
+
+body.dark .back-to-top {
+  box-shadow: 0 4px 16px rgba(241,184,45,0.2);
+}

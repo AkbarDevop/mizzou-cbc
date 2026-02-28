@@ -127,13 +127,26 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-// ===== Hero entrance animation =====
+// ===== Page load fade-in =====
 window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+
+  // Hero entrance animation
   document.querySelectorAll('.hero-anim').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), i * 150);
   });
-
 });
+
+// ===== Back to Top Button =====
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // ===== Scroll Spy — active nav link =====
 const sections = document.querySelectorAll('section[id]');

@@ -146,7 +146,6 @@ def index(request):
         ],
         'links': {
             'groupme': 'https://groupme.com/join_group/112902855/DrXZJmkl',
-            'github': 'https://github.com/AkbarDevop/mizzou-cbc',
             'instagram': 'https://instagram.com/cbcmizzou',
             'email': 'mailto:cbcmizzou@gmail.com',
             'claude_ai': 'https://claude.ai',
