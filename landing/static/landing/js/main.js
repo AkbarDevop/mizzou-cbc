@@ -316,3 +316,269 @@ document.querySelectorAll('.magnetic').forEach(btn => {
     btn.style.transform = 'translate(0, 0)';
   });
 });
+
+// ===== Gallery Carousel =====
+(function() {
+  var track = document.getElementById('galTrack');
+  var dots = document.getElementById('galDots');
+  if (!track) return;
+
+  var slides = track.querySelectorAll('.gallery-slide');
+  var total = slides.length;
+  var idx = 0;
+
+  function buildDots() {
+    dots.innerHTML = '';
+    for (var i = 0; i < total; i++) {
+      var d = document.createElement('button');
+      d.classList.add('gallery-dot');
+      if (i === 0) d.classList.add('active');
+      d.dataset.i = i;
+      d.addEventListener('click', function() { goTo(parseInt(this.dataset.i)); });
+      dots.appendChild(d);
+    }
+  }
+
+  function goTo(i) {
+    idx = i;
+    if (idx < 0) idx = total - 1;
+    if (idx >= total) idx = 0;
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    dots.querySelectorAll('.gallery-dot').forEach(function(d, j) {
+      d.classList.toggle('active', j === idx);
+    });
+  }
+
+  document.getElementById('galPrev').addEventListener('click', function() { goTo(idx - 1); });
+  document.getElementById('galNext').addEventListener('click', function() { goTo(idx + 1); });
+
+  // Auto-advance every 5s
+  var timer = setInterval(function() { goTo(idx + 1); }, 5000);
+  track.closest('.gallery').addEventListener('mouseenter', function() { clearInterval(timer); });
+  track.closest('.gallery').addEventListener('mouseleave', function() {
+    timer = setInterval(function() { goTo(idx + 1); }, 5000);
+  });
+
+  buildDots();
+})();
+
+// ===== Events Calendar =====
+(function() {
+  var dataEl = document.getElementById('events-data');
+  if (!dataEl) return;
+
+  var events = JSON.parse(dataEl.textContent);
+  var grid = document.getElementById('calGrid');
+  var label = document.getElementById('calMonthLabel');
+  var prevBtn = document.getElementById('calPrev');
+  var nextBtn = document.getElementById('calNext');
+  var todayBtn = document.getElementById('calToday');
+
+  if (!grid || !label) return;
+
+  // Map date keys to event titles for display in calendar cells
+  var eventDateMap = {};
+  events.forEach(function(e) {
+    var key = e.year + '-' + e.month_num + '-' + e.day_num;
+    if (!eventDateMap[key]) eventDateMap[key] = [];
+    eventDateMap[key].push(e.title);
+  });
+
+  var now = new Date();
+  var currentYear = now.getFullYear();
+  var currentMonth = now.getMonth();
+
+  var MONTH_NAMES = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  function renderCalendar(year, month) {
+    grid.innerHTML = '';
+    label.textContent = MONTH_NAMES[month] + ' ' + year;
+
+    var firstDay = new Date(year, month, 1).getDay();
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var daysInPrevMonth = new Date(year, month, 0).getDate();
+
+    var today = new Date();
+    var isCurrentMonth = (today.getFullYear() === year && today.getMonth() === month);
+
+    function makeCell(dayNum, extraClass) {
+      var cell = document.createElement('div');
+      cell.classList.add('calendar-day');
+      if (extraClass) cell.classList.add(extraClass);
+      var numSpan = document.createElement('span');
+      numSpan.classList.add('calendar-day-num');
+      numSpan.textContent = dayNum;
+      cell.appendChild(numSpan);
+      return cell;
+    }
+
+    // Previous month trailing days
+    for (var i = firstDay - 1; i >= 0; i--) {
+      grid.appendChild(makeCell(daysInPrevMonth - i, 'other-month'));
+    }
+
+    // Current month days
+    for (var d = 1; d <= daysInMonth; d++) {
+      var cell = makeCell(d);
+      var dateKey = year + '-' + (month + 1) + '-' + d;
+
+      if (isCurrentMonth && d === today.getDate()) {
+        cell.classList.add('today');
+      }
+
+      if (eventDateMap[dateKey]) {
+        cell.classList.add('has-event');
+        cell.setAttribute('role', 'button');
+        cell.setAttribute('tabindex', '0');
+        cell.setAttribute('aria-label', 'View event on ' + MONTH_NAMES[month] + ' ' + d);
+        cell.dataset.dateKey = dateKey;
+
+        // Add event title labels inside the cell
+        eventDateMap[dateKey].forEach(function(title) {
+          var titleEl = document.createElement('span');
+          titleEl.classList.add('calendar-event-title');
+          titleEl.textContent = title;
+          cell.appendChild(titleEl);
+        });
+
+        cell.addEventListener('click', function() {
+          handleDateClick(this.dataset.dateKey, this);
+        });
+        cell.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleDateClick(this.dataset.dateKey, this);
+          }
+        });
+      }
+
+      grid.appendChild(cell);
+    }
+
+    // Next month leading days
+    var totalCells = firstDay + daysInMonth;
+    var remaining = (totalCells <= 35) ? 35 - totalCells : 42 - totalCells;
+    for (var i = 1; i <= remaining; i++) {
+      grid.appendChild(makeCell(i, 'other-month'));
+    }
+
+    // Register calendar event days with custom cursor
+    grid.querySelectorAll('.has-event').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { cursor.classList.add('cursor-hover'); });
+      el.addEventListener('mouseleave', function() { cursor.classList.remove('cursor-hover'); });
+    });
+  }
+
+  var detailContent = document.getElementById('detailContent');
+  var detailDate = document.getElementById('detailDate');
+  var detailCards = document.getElementById('detailCards');
+
+  function showEventDetail(dateKey) {
+    var matched = events.filter(function(e) {
+      return (e.year + '-' + e.month_num + '-' + e.day_num) === dateKey;
+    });
+
+    if (matched.length > 0 && detailContent && detailCards && detailDate) {
+      var parts = dateKey.split('-');
+      detailDate.textContent = MONTH_NAMES[parseInt(parts[1]) - 1] + ' ' + parts[2] + ', ' + parts[0];
+
+      detailCards.innerHTML = '';
+      matched.forEach(function(ev) {
+        var card = document.createElement('div');
+        card.classList.add('detail-card');
+        card.innerHTML =
+          '<div class="detail-card-title text-heading">' + ev.title + '</div>' +
+          '<div class="detail-card-desc text-muted">' + ev.description + '</div>' +
+          '<div class="detail-card-meta text-muted">' +
+            '<span>\u{1F4CD} ' + ev.location + '</span>' +
+            '<span>\u{1F550} ' + ev.time + '</span>' +
+          '</div>';
+        detailCards.appendChild(card);
+      });
+
+      document.querySelectorAll('.detail-event-item').forEach(function(item) {
+        item.classList.remove('active');
+        if (item.dataset.date === dateKey) {
+          item.classList.add('active');
+        }
+      });
+    }
+  }
+
+  function handleDateClick(dateKey, cell) {
+    grid.querySelectorAll('.calendar-day.active').forEach(function(c) {
+      c.classList.remove('active');
+    });
+    cell.classList.add('active');
+
+    showEventDetail(dateKey);
+
+    if (window.innerWidth <= 960) {
+      document.getElementById('eventDetailPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Click on all-events list items to trigger calendar selection
+  document.querySelectorAll('.detail-event-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var dateKey = this.dataset.date;
+      if (!dateKey) return;
+      var parts = dateKey.split('-');
+      var targetMonth = parseInt(parts[1]) - 1;
+      var targetYear = parseInt(parts[0]);
+
+      // Navigate calendar to the right month if needed
+      if (targetYear !== currentYear || targetMonth !== currentMonth) {
+        currentYear = targetYear;
+        currentMonth = targetMonth;
+        renderCalendar(currentYear, currentMonth);
+      }
+
+      // Find and click the matching calendar day
+      var dayCell = grid.querySelector('.calendar-day.has-event[data-date-key="' + dateKey + '"]');
+      if (dayCell) {
+        handleDateClick(dateKey, dayCell);
+      }
+    });
+  });
+
+  prevBtn.addEventListener('click', function() {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  nextBtn.addEventListener('click', function() {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  todayBtn.addEventListener('click', function() {
+    var t = new Date();
+    currentYear = t.getFullYear();
+    currentMonth = t.getMonth();
+    renderCalendar(currentYear, currentMonth);
+  });
+
+  renderCalendar(currentYear, currentMonth);
+
+  // Auto-select first event on load
+  if (events.length > 0) {
+    var firstKey = events[0].year + '-' + events[0].month_num + '-' + events[0].day_num;
+    var firstCell = grid.querySelector('.calendar-day.has-event[data-date-key="' + firstKey + '"]');
+    if (firstCell) {
+      firstCell.classList.add('active');
+    }
+    showEventDetail(firstKey);
+  }
+})();

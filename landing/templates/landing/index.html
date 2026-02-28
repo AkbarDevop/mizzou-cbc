@@ -6,14 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Builders Club @ Mizzou</title>
   <meta name="description" content="Learn, Build, and Ship with Claude AI at the University of Missouri. Free Claude Pro access, API credits, workshops, and a community of builders.">
+  <meta name="keywords" content="Claude, AI, Anthropic, Mizzou, University of Missouri, Builders Club, CBC, student organization, machine learning">
+  <meta name="author" content="Claude Builders Club @ Mizzou">
+  <!-- Open Graph -->
   <meta property="og:title" content="Claude Builders Club @ Mizzou">
-  <meta property="og:description" content="Learn, Build, and Ship with Claude AI at the University of Missouri.">
+  <meta property="og:description" content="Learn, Build, and Ship with Claude AI at the University of Missouri. Free Claude Pro access, API credits, workshops, and a community of builders.">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23F1B82D'/><text x='50' y='68' font-family='Inter,system-ui,sans-serif' font-size='48' font-weight='800' fill='%23000' text-anchor='middle'>CBC</text></svg>">
+  <meta property="og:url" content="https://cbcmizzou.com">
+  <meta property="og:site_name" content="CBC Mizzou">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Builders Club @ Mizzou">
+  <meta name="twitter:description" content="Learn, Build, and Ship with Claude AI at the University of Missouri. Free Claude Pro access, API credits, and a community of builders.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{% static 'landing/images/favicon.svg' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}?v=13">
   <script>
     // Apply dark mode before paint to prevent flash
     (function() {
@@ -34,12 +44,13 @@
       <div class="nav-links">
         <a href="#benefits">Benefits</a>
         <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
         <a href="#events">Events</a>
         <a href="#team">Team</a>
         <a href="#projects">Projects</a>
         <a href="#faq">FAQ</a>
         <button class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
-        <a href="{{ links.join_form }}" target="_blank" rel="noopener noreferrer" class="nav-cta">Join Now</a>
+        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="nav-cta">Join GroupMe</a>
       </div>
 
       <div style="display:flex;align-items:center;gap:0.5rem;">
@@ -57,7 +68,7 @@
       <a href="#team">Team</a>
       <a href="#projects">Projects</a>
       <a href="#faq">FAQ</a>
-      <a href="{{ links.join_form }}" target="_blank" rel="noopener noreferrer" class="nav-cta" style="display:inline-block;text-align:center;margin-top:0.5rem;">Join Now</a>
+      <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="nav-cta" style="display:inline-block;text-align:center;margin-top:0.5rem;">Join GroupMe</a>
     </div>
   </nav>
 
@@ -72,10 +83,10 @@
     <div class="hero-content">
       <div class="hero-badge hero-anim">Part of the Anthropic Campus Program</div>
       <h1 class="hero-anim">Claude Builders Club<br><span class="hero-gradient-text">@ Mizzou</span></h1>
-      <p class="hero-anim">Learn, Build, and Ship with Claude AI at the University of Missouri. Free Claude Pro access, monthly API credits, and a community of builders across every major.</p>
+      <p class="hero-anim"><span class="accent">Learn, Build, and Ship</span> with Claude AI at the University of Missouri. Free Claude Pro access, monthly API credits, and a community of builders across <span class="accent">every major.</span></p>
       <div class="hero-buttons hero-anim">
-        <a href="{{ links.join_form }}" target="_blank" rel="noopener noreferrer" class="btn-gold magnetic">Join the Club</a>
-        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="btn-outline magnetic">Join GroupMe</a>
+        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="btn-gold magnetic">Join GroupMe</a>
+        <a href="{{ links.github }}" target="_blank" rel="noopener noreferrer" class="btn-outline magnetic">GitHub</a>
       </div>
     </div>
   </section>
@@ -85,7 +96,7 @@
     <div class="container">
       <div class="section-header fade-up">
         <h2 class="text-heading">Member <span class="gradient-text">Benefits</span></h2>
-        <p class="text-muted">Everything you need to start building with AI — completely free for Mizzou students.</p>
+        <p class="text-muted">Everything you need to start building with AI — <span class="accent">completely free</span> for Mizzou students.</p>
       </div>
       <div class="grid-4 stagger-container">
         {% for b in benefits %}
@@ -105,9 +116,9 @@
       <div class="about-grid">
         <div class="about-text fade-up">
           <h2 class="text-heading">About <span class="gradient-text">CBC Mizzou</span></h2>
-          <p class="text-body">Claude Builders Club at Mizzou is a student-led community for builders of all backgrounds. Whether you're a computer science major or a journalism student, we believe AI tools like Claude can amplify what you create.</p>
-          <p class="text-body">As part of Anthropic's nationwide Campus Program, our chapter gives Mizzou students free access to the most capable AI tools, hands-on workshops, and a collaborative community to learn and build together.</p>
-          <p class="text-body">We're building at the intersection of Mizzou's world-class journalism, engineering, and business programs — bringing diverse perspectives to AI development and responsible innovation.</p>
+          <p class="text-body">Claude Builders Club at Mizzou is a student-led community for builders of <span class="accent">all backgrounds.</span> Whether you're a computer science major or a journalism student, we believe AI tools like Claude can amplify what you create.</p>
+          <p class="text-body">As part of Anthropic's nationwide Campus Program, our chapter gives Mizzou students free access to the most capable AI tools, <span class="accent">hands-on workshops,</span> and a collaborative community to learn and build together.</p>
+          <p class="text-body">We're building at the intersection of Mizzou's world-class journalism, engineering, and business programs — bringing <span class="accent">diverse perspectives</span> to AI development and responsible innovation.</p>
         </div>
         <div class="stats-grid stagger-container">
           {% for s in stats %}
@@ -121,32 +132,91 @@
     </div>
   </section>
 
+  <!-- ===== Gallery ===== -->
+  <section id="gallery" class="section bg-white-section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <h2 class="text-heading">Club <span class="gradient-text">Gallery</span></h2>
+        <p class="text-muted">Moments from our meetings, workshops, and <span class="accent">events.</span></p>
+      </div>
+      <div class="gallery fade-up">
+        <button class="gallery-arrow gallery-prev" id="galPrev" aria-label="Previous">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="gallery-window">
+          <div class="gallery-track" id="galTrack">
+            {% for photo in gallery %}
+            <div class="gallery-slide">
+              <div class="gallery-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>{{ photo.caption }}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <button class="gallery-arrow gallery-next" id="galNext" aria-label="Next">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="gallery-dots" id="galDots"></div>
+    </div>
+  </section>
+
   <!-- ===== Events ===== -->
   <section id="events" class="section bg-white-section">
     <div class="container">
       <div class="section-header fade-up">
         <h2 class="text-heading">Upcoming <span class="gradient-text">Events</span></h2>
-        <p class="text-muted">Workshops, hackathons, and demo nights — come build with us.</p>
+        <p class="text-muted">Workshops, hackathons, and demo nights — <span class="accent">come build with us.</span></p>
       </div>
-      <div class="grid-2 stagger-container">
-        {% for e in events %}
-        <div class="card event-card stagger-item tilt-card">
-          <div class="date-badge">
-            <span class="month">{{ e.month }}</span>
-            <span class="day text-heading">{{ e.day }}</span>
-          </div>
-          <div>
-            <h3 class="text-heading" style="margin:0 0 0.25rem 0;">{{ e.title }}</h3>
-            <p class="text-muted" style="margin:0 0 0.75rem 0;">{{ e.description }}</p>
-            <div class="event-meta text-muted">
-              <span>📍 {{ e.location }}</span>
-              <span>🕐 {{ e.time }}</span>
+      <div class="events-layout">
+        <!-- Calendar Widget (left ~58%) -->
+        <div class="calendar-widget fade-up">
+          <div class="calendar-header">
+            <div class="calendar-header-left">
+              <button class="calendar-nav" id="calPrev" aria-label="Previous month">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="calendar-month-label text-heading" id="calMonthLabel"></span>
+              <button class="calendar-nav" id="calNext" aria-label="Next month">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
             </div>
+            <button class="calendar-today-btn" id="calToday">Today</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="calendar-grid" id="calGrid"></div>
+        </div>
+
+        <!-- Event Details Panel (right ~42%) -->
+        <div class="event-detail-panel fade-up" id="eventDetailPanel">
+          <div class="detail-panel-content" id="detailContent">
+            <div class="detail-date-label text-muted" id="detailDate"></div>
+            <div id="detailCards"></div>
+          </div>
+          <!-- All Events List -->
+          <div class="detail-all-events">
+            <h4 class="text-heading detail-all-heading">All Upcoming</h4>
+            {% for e in events %}
+            <div class="detail-event-item"
+                 id="event-{{ e.year }}-{{ e.month_num }}-{{ e.day_num }}"
+                 data-date="{{ e.year }}-{{ e.month_num }}-{{ e.day_num }}">
+              <div class="detail-event-dot"></div>
+              <div class="detail-event-info">
+                <div class="detail-event-date text-muted">{{ e.month }} {{ e.day }} &middot; {{ e.time }}</div>
+                <div class="detail-event-title text-heading">{{ e.title }}</div>
+                <div class="detail-event-loc text-muted">&#x1F4CD; {{ e.location }}</div>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
-        {% endfor %}
       </div>
     </div>
+    {{ events|json_script:"events-data" }}
   </section>
 
   <!-- ===== Team ===== -->
@@ -154,7 +224,7 @@
     <div class="container">
       <div class="section-header fade-up">
         <h2 class="text-heading">Our <span class="gradient-text">Team</span></h2>
-        <p class="text-muted">The student leaders making CBC Mizzou happen.</p>
+        <p class="text-muted">The student leaders <span class="accent">making it happen.</span></p>
       </div>
       <div class="team-grid stagger-container">
         {% for m in team %}
@@ -179,11 +249,12 @@
     <div class="container">
       <div class="section-header fade-up">
         <h2 class="text-heading">Member <span class="gradient-text">Projects</span></h2>
-        <p class="text-muted">Check out what our members are building with Claude.</p>
+        <p class="text-muted">Check out what our members are <span class="accent">building with Claude.</span></p>
       </div>
       <div class="grid-3 stagger-container">
         {% for p in projects %}
-        <div class="card project-card stagger-item tilt-card">
+        <div class="card project-card stagger-item tilt-card{% if p.coming_soon %} coming-soon{% endif %}">
+          {% if p.coming_soon %}<span class="coming-soon-badge">Coming Soon</span>{% endif %}
           <h3 class="text-heading">{{ p.title }}</h3>
           <p class="text-muted">{{ p.description }}</p>
           <div class="tech-tags">
@@ -191,7 +262,11 @@
             <span class="tech-tag">{{ t }}</span>
             {% endfor %}
           </div>
-          <a href="#" class="project-link">View Project →</a>
+          {% if p.link %}
+          <a href="{{ p.link }}" target="_blank" rel="noopener noreferrer" class="project-link">View Project &#x2192;</a>
+          {% elif p.coming_soon %}
+          <span class="project-link project-link-disabled">Coming Soon &#x2192;</span>
+          {% endif %}
         </div>
         {% endfor %}
       </div>
@@ -203,7 +278,7 @@
     <div class="container">
       <div class="section-header fade-up">
         <h2 class="text-heading">Frequently Asked <span class="gradient-text">Questions</span></h2>
-        <p class="text-muted">Everything you need to know about joining CBC Mizzou.</p>
+        <p class="text-muted">Everything you need to know about <span class="accent">joining CBC Mizzou.</span></p>
       </div>
       <div class="faq-list stagger-container">
         {% for faq in faq_items %}
@@ -252,10 +327,13 @@
           <a href="{{ links.email }}" class="social-icon" aria-label="Email">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           </a>
+          <a href="{{ links.github }}" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
         </div>
         <ul style="margin-top:1rem;">
           <li><a href="{{ links.email }}">cbcmizzou@gmail.com</a></li>
-          <li><a href="{{ links.join_form }}" target="_blank" rel="noopener noreferrer">Sign Up Form</a></li>
+          <li><a href="{{ links.github }}" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </div>
@@ -264,6 +342,6 @@
     </div>
   </footer>
 
-  <script src="{% static 'landing/js/main.js' %}"></script>
+  <script src="{% static 'landing/js/main.js' %}?v=13"></script>
 </body>
 </html>
