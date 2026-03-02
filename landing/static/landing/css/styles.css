@@ -100,6 +100,23 @@ body.dark .date-badge { background: rgba(241,184,45,0.15); }
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(241,184,45,0.25);
 }
+.btn-gold-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--gold);
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+  border: 2px solid var(--gold);
+  cursor: pointer;
+}
+.btn-gold-outline:hover {
+  background: rgba(241, 184, 45, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(241,184,45,0.15);
+}
 
 .btn-outline {
   display: inline-block;
@@ -180,6 +197,14 @@ body.dark .navbar.scrolled .nav-links a { color: #ccc; }
   font-weight: 600;
 }
 .nav-cta:hover { background: var(--gold-dark); }
+.nav-cta-outline {
+  background: transparent !important;
+  color: var(--gold) !important;
+  border: 1.5px solid var(--gold);
+}
+.nav-cta-outline:hover {
+  background: rgba(241, 184, 45, 0.1) !important;
+}
 
 /* Dark mode toggle */
 .dark-toggle {
@@ -1267,6 +1292,25 @@ body.dark .connect-card-primary {
 }
 .connect-card-primary:hover {
   box-shadow: 0 4px 24px rgba(241, 184, 45, 0.2);
+}
+.connect-card-signup {
+  grid-column: 1 / -1;
+  border-color: var(--gold);
+  background: rgba(241, 184, 45, 0.04);
+}
+body.dark .connect-card-signup {
+  background: rgba(241, 184, 45, 0.06);
+  border-color: var(--gold);
+}
+.connect-card-signup .connect-icon {
+  fill: var(--gold);
+}
+.connect-card-signup .connect-arrow {
+  color: var(--gold);
+}
+.connect-card-signup:hover {
+  background: rgba(241, 184, 45, 0.1);
+  box-shadow: 0 4px 24px rgba(241, 184, 45, 0.15);
 }
 .connect-icon {
   width: 28px;

@@ -54,7 +54,8 @@
         <a href="#faq">FAQ</a>
         <a href="#connect">Connect</a>
         <button class="dark-toggle" aria-label="Toggle dark mode">🌙</button>
-        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="nav-cta">Join GroupMe</a>
+        <a href="{{ links.signup }}" target="_blank" rel="noopener noreferrer" class="nav-cta">Sign Up</a>
+        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="nav-cta nav-cta-outline">Join GroupMe</a>
       </div>
 
       <div style="display:flex;align-items:center;gap:0.5rem;">
@@ -74,7 +75,8 @@
       <a href="#projects">Projects</a>
       <a href="#faq">FAQ</a>
       <a href="#connect">Connect</a>
-      <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="nav-cta" style="display:inline-block;text-align:center;margin-top:0.5rem;">Join GroupMe</a>
+      <a href="{{ links.signup }}" target="_blank" rel="noopener noreferrer" class="nav-cta" style="display:inline-block;text-align:center;margin-top:0.5rem;">Sign Up</a>
+      <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="nav-cta nav-cta-outline" style="display:inline-block;text-align:center;margin-top:0.5rem;">Join GroupMe</a>
     </div>
   </nav>
 
@@ -91,7 +93,8 @@
       <h1 class="hero-anim">Claude Builders Club<br><span class="hero-gradient-text">@ Mizzou</span></h1>
       <p class="hero-anim"><span class="accent">Learn, Build, and Ship</span> with Claude AI at the University of Missouri. Free Claude Pro access, monthly API credits, and a community of builders across <span class="accent">every major.</span></p>
       <div class="hero-buttons hero-anim">
-        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="btn-gold magnetic">Join GroupMe</a>
+        <a href="{{ links.signup }}" target="_blank" rel="noopener noreferrer" class="btn-gold magnetic">Sign Up</a>
+        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="btn-gold-outline magnetic">Join GroupMe</a>
       </div>
     </div>
   </section>
@@ -311,7 +314,15 @@
         <p class="text-muted">Join the community and <span class="accent">start building with us.</span></p>
       </div>
       <div class="connect-grid fade-up">
-        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="connect-card connect-card-primary">
+        <a href="{{ links.signup }}" target="_blank" rel="noopener noreferrer" class="connect-card connect-card-primary">
+          <svg class="connect-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <div class="connect-card-text">
+            <span class="connect-label">Sign Up</span>
+            <span class="connect-desc">Become a member — get Claude Pro & API credits</span>
+          </div>
+          <span class="connect-arrow">→</span>
+        </a>
+        <a href="{{ links.groupme }}" target="_blank" rel="noopener noreferrer" class="connect-card">
           <svg class="connect-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.73.44 3.36 1.22 4.78L2 22l5.22-1.22C8.64 21.56 10.27 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.57 0-3.05-.4-4.35-1.12l-.31-.18-3.22.84.86-3.14-.2-.32A7.963 7.963 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
           <div class="connect-card-text">
             <span class="connect-label">GroupMe</span>
@@ -357,6 +368,7 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
+          <li><a href="{{ links.signup }}" target="_blank" rel="noopener noreferrer">Sign Up</a></li>
           <li><a href="{{ links.claude_ai }}" target="_blank" rel="noopener noreferrer">Claude.ai</a></li>
           <li><a href="{{ links.api_docs }}" target="_blank" rel="noopener noreferrer">API Documentation</a></li>
           <li><a href="{{ links.anthropic }}" target="_blank" rel="noopener noreferrer">Anthropic</a></li>
