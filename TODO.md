@@ -4,9 +4,9 @@ Items that need real data from the team before the site is ready.
 
 ## Links (currently placeholder)
 - [ ] **Join Form** — replace `https://forms.gle/your-form-link` with actual Google Form signup link
-- [ ] **GroupMe** — replace `https://groupme.com/join_group/your-group-link` with actual GroupMe invite link
-- [ ] **Instagram** — confirm handle is `@cbcmizzou` or update
-- [ ] **Email** — confirm email is `cbcmizzou@gmail.com` or update
+- [X] **GroupMe** — replace `https://groupme.com/join_group/your-group-link` with actual GroupMe invite link
+- [X] **Instagram** — confirm handle is `@cbcmizzou` or update
+- [X] **Email** — confirm email is `cbcmizzou@gmail.com` or update
 
 ## Team
 - [ ] **Colton Treloar** — confirm major and year

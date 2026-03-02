@@ -146,7 +146,8 @@ def index(request):
         ],
         'links': {
             'groupme': 'https://groupme.com/join_group/112902855/DrXZJmkl',
-            'instagram': 'https://instagram.com/cbcmizzou',
+            'instagram': 'https://www.instagram.com/claude.miz/',
+            'linkedin': 'https://www.linkedin.com/groups/18313009/',
             'email': 'mailto:cbcmizzou@gmail.com',
             'claude_ai': 'https://claude.ai',
             'anthropic': 'https://anthropic.com',

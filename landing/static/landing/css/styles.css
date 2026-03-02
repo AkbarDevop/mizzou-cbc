@@ -1221,6 +1221,97 @@ body.dark .coming-soon-badge {
   margin: 0;
 }
 
+/* ===== Connect Section ===== */
+.connect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+.connect-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+body.dark .connect-card {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+.connect-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(241, 184, 45, 0.12);
+  transform: translateY(-2px);
+}
+.connect-card-primary {
+  grid-column: 1 / -1;
+  background: var(--black);
+  border-color: var(--gold);
+  color: #fff;
+}
+body.dark .connect-card-primary {
+  background: #111;
+  border-color: var(--gold);
+}
+.connect-card-primary .connect-desc {
+  color: #9ca3af;
+}
+.connect-card-primary .connect-arrow {
+  color: var(--gold);
+}
+.connect-card-primary:hover {
+  box-shadow: 0 4px 24px rgba(241, 184, 45, 0.2);
+}
+.connect-icon {
+  width: 28px;
+  height: 28px;
+  fill: #6b7280;
+  flex-shrink: 0;
+  transition: fill 0.2s;
+}
+.connect-card-primary .connect-icon {
+  fill: var(--gold);
+}
+.connect-card:hover .connect-icon {
+  fill: var(--gold);
+}
+.connect-card-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.connect-label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.connect-desc {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin-top: 0.125rem;
+}
+.connect-arrow {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+.connect-card:hover .connect-arrow {
+  color: var(--gold);
+  transform: translateX(3px);
+}
+@media (max-width: 640px) {
+  .connect-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== Footer ===== */
 .footer {
   background: #1a1a1a;
