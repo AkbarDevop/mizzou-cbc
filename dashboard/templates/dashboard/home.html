@@ -1,0 +1,24 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Overview{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Dashboard</h1>
+  <p>Manage your club's public content.</p>
+</div>
+
+<div class="stat-cards">
+  <div class="stat-card">
+    <div class="stat-num">{{ gallery_count }}</div>
+    <div class="stat-label">Gallery Images</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">{{ event_count }}</div>
+    <div class="stat-label">Events</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">{{ project_count }}</div>
+    <div class="stat-label">Projects</div>
+  </div>
+</div>
+{% endblock %}

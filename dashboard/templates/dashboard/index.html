@@ -156,7 +156,7 @@
             {% for photo in gallery %}
             <div class="gallery-slide">
               {% if photo.image %}
-              <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="gallery-img">
+              <img src="{% static photo.image %}" alt="{{ photo.caption }}" class="gallery-img">
               {% else %}
               <div class="gallery-placeholder">
                 <svg>...</svg>
